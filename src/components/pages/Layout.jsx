@@ -1,19 +1,35 @@
-import { Link, Outlet } from 'react-router-dom';
-import logo from '../components/img/logo.svg';
+import { Outlet } from 'react-router-dom';
+import { Link, animateScroll as scroll } from "react-scroll";
 
-const Layout = ({ text }) => {
+import logo from '../img/logo.svg';
+import languageBtn from '../img/language.svg';
+
+const Layout = ( {t, handleLanguageChange, language} ) => {
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+      };
+    
+
     return (
       <>
-        <header>
-            <div className='logo'><Link to='/:id'><img src={logo}></img></Link></div>
-            <div className='mainMenu'>
-                    <a href='/MainLandingPage#aboutpage'>{text.menuAbout}</a>
-                    <Link to='/companies'>{text.menuCompanies}</Link>
-                    <Link to='/#contacts'>{text.menuContacts}</Link>
+      <header>
+            <div className='logo'><img src={logo} onClick={scrollToTop}></img></div>
+                <div className='mainMenu'>
+                    <Link to='about' spy={true} smooth={true} offset={-80} duration={500}>{t('menuAbout')}</Link>
+                    <Link to='companies' spy={true} smooth={true} offset={-80} duration={500}>{t('menuCompanies')}</Link>
+                    <Link to='contacts' spy={true} smooth={true} offset={-80} duration={500}>{t('menuContacts')}</Link>
+                </div>  
+            <div className='headerRight'>
+                <div className='search'>
+                    <input placeholder='Search'></input>
+                </div>
+                <div className='language' onClick={handleLanguageChange}>
+                    <img src={languageBtn} alt='Сменить язык' onClick={handleLanguageChange}></img>
+                </div>
             </div>
         </header>
         <main>
-        <Outlet />
+        <Outlet t={t} language={language} />
         </main>
       </>
     )

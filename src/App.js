@@ -1,14 +1,16 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Routes, Route } from 'react-router-dom';
 
-import logo from './components/img/logo.svg';
-import languageBtn from './components/img/language.svg';
-import { Companies } from './components/companies';
-import { Pagination } from './components/pagination';
+import { MainLandingPage } from './components/pages/MainLandingPage';
+import { Layout } from './components/pages/Layout';
+import { Companies } from './components/pages/Companies';
+import { CompanieSinglPage } from './components/pages/CompanieSinglPage';
+import { Notfoundpage } from './components/pages/Notfoundpage';
+
 import useLocalStorage from './components/hooks/use-localstorage';
 import i18n from './i18n';
-//import { Modal } from './components/modal.jsx';
+
 
 function App() {
   const {t} = useTranslation();
@@ -24,64 +26,14 @@ function App() {
     }
   }
 
-// Старый файл текст
-/*  const [text, setText] = useState([]);
-
-    useEffect(() => {
-      fetch('https://raw.githubusercontent.com/ChilikinAM/farm.kg-Landing/main/src/components/data/main_en.json')
-        .then(res => res.json())
-        .then(data => setText(data))
-    }, []);*/
-
   // AbuotUS Data
-  const [textAboutUs, setTextAboutUs] = useState([]);
-  useEffect(() => {
-    const getAboutUs = async () => {
-      const res = await fetch('https://farm-kg.herokuapp.com/about_us/', {method: "GET"})
-      .then(res => res.json())
-      .then(data => setTextAboutUs(data[0]))
-    }
-    getAboutUs()
-  }, [])
+
 
   //Pagination Companies
-
-  const [companies, setCompanies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [companiesPerPage] = useState(6);
-
-  useEffect( () => {
-    const getCompanies = async () => {
-      setLoading(true);
-      const res = await fetch('https://farm-kg.herokuapp.com/company/', {method: "GET"})
-      .then(res => res.json())
-      .then(data => setCompanies(data));
-      setLoading(false)
-    }
-
-    getCompanies()
-  }, [])
-
-  const lastCompanieIndex = currentPage * companiesPerPage;
-  const fistCompaniesIndex = lastCompanieIndex - companiesPerPage;
-  const currentCompanies = companies.slice(fistCompaniesIndex, lastCompanieIndex);
-
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-  const nextPage = () => setCurrentPage( prev => prev + 1);
-  const backPage = () => setCurrentPage( prev => prev - 1);
+  
 
   // Contact Data
-  const [textContact, setTextContact] = useState([]);
-  useEffect(() => {
-    const getContact = async () => {
-      const res = await fetch('https://farm-kg.herokuapp.com/contacts/', {method: "GET"})
-      .then(res => res.json())
-      .then(data => setTextContact(data[0]))
-    }
-    getContact()
-  }, [])
-
+ 
 
   //Модалка - Пока не нужна
 
@@ -94,7 +46,23 @@ function App() {
 
   return (
     <>
-    <header>
+ 
+ <Routes>
+        <Route path='/' element={< Layout t={t} language={language} handleLanguageChange={handleLanguageChange} />}>
+          <Route index element={<MainLandingPage 
+          t={t}
+          language={language} />} />
+          <Route path='Companies' element={<Companies t={t} language={language} />} />
+          <Route path=':id/:title' element={<CompanieSinglPage t={t} language={language} />} />
+          <Route path='*' element={<Notfoundpage t={t} language={language} />} />
+        </Route>
+      </Routes>
+
+
+ 
+ {/* Old landing */}
+ 
+   {/* <header>
         <div className='logo'><a href='/'><img src={logo} alt="{text.mainHeader}"></img></a></div>
         <div className='mainMenu'>
                 <a href='/#about'>{t('menuAbout')}</a>
@@ -109,7 +77,7 @@ function App() {
         </div>
     </header>
     <main>
-{/* Блок первый */}
+{/* Блок первый 
     <section id='first'>
       <div className='content'>
         <div className="arnamentLeft"></div>
@@ -129,8 +97,8 @@ function App() {
         </div>
       </div>
       </section>
-{/*  Конец первого блока */}
-{/*  Блок о нас  */}
+{/*  Конец первого блока 
+{/*  Блок о нас  
     <section id='about'>
       <div className='content'>
         <div className="arnamentRight"></div>
@@ -146,8 +114,8 @@ function App() {
         </div>
       </div>
       </section>
-{/*  Конец блока о нас  */}
-{/*  Блок компании  */}
+{/*  Конец блока о нас  
+{/*  Блок компании  
     <section id='companies'>
       <div className='content'>
           <div className='companies'>
@@ -165,11 +133,11 @@ function App() {
                   <img src={post.logoMainPage} alt={post.name}></img>
                   <div className='morebutton'><h3>{text.companiesMore}</h3></div></div>
               )})}
-*/}
+
                 <Companies companies={currentCompanies} loading={loading} t={t} language={language} />
           </div>
       </div>
-{/* Модалка Компании */}{/*}
+{/* Модалка Компании 
       <Modal active={modalActive} setActive={setModalActive} id={companieID}>
                 <div className='singlCompanie'>
                   <div className='left'>
@@ -183,11 +151,11 @@ Supara talkan chocolates made from barley oatmeal, ghee, honey and local organic
                   </div>
                 </div>
                 <div className='companieSlided'></div>
-      </Modal>*/}
-{/* Конец модалки Компании */}
+      </Modal>
+{/* Конец модалки Компании 
 </section>
-{/*  Конец блока компании  */}
-{/*  Блок Контакты  */}
+{/*  Конец блока компании  
+{/*  Блок Контакты  
       <section id='contacts'>
         <div className='content'>
           <div className="contactsMain">
@@ -216,8 +184,8 @@ Supara talkan chocolates made from barley oatmeal, ghee, honey and local organic
         </div>
       </div>
       </section>
-{/*  Конец блока контакты  */}
-    </main>
+{/*  Конец блока контакты  
+    </main>*/}
   </>
   );
 }

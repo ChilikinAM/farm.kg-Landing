@@ -1,18 +1,17 @@
-import './Homepage.css';
 import { Homepage } from './Homepage';
 import { About } from './Aboutpage';
 import { Companies } from './Companies';
 import { Contacts } from './Contacts';
 
 
-const MainLandingPage = ({ text }) => {
+const MainLandingPage = ({ t, language }) => {
 
     return (
         <>
-        <div className='componentPage' id='homepage'><Homepage text={text} /></div>
-        <div className='componentPage' id='aboutpage'><About text={text} /></div>
-        <div className='componentPage' id='companies'><Companies text={text} /></div>
-        <div className='componentPage' id='contacts'><Contacts text={text} /></div>
+        <section id='first'><Homepage t={t} language={language} /></section>
+        <section id='about'><About t={t} language={language} /></section>
+        <section id='companies'><Companies t={t} language={language} /></section>
+        <section id='contacts'><Contacts t={t} language={language} /></section>
         </>
     )
 }

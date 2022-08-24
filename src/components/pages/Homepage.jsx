@@ -1,16 +1,14 @@
-import './Homepage.css';
-
-
-const Homepage = ({ text }) => {
+const Homepage = ({ t, language }) => {
 
     return (
         <>
+        <div className='content'>
         <div className="arnamentLeft"></div>
         <div className="arnamentRight"></div>
         <div className="homepageMain">
             <div className='mainContent'>
-                <div className='slogan'><h1>{text.mainHeader}</h1>
-                <h3>{text.mainSlogan}</h3>
+                <div className='slogan'><h1>{t('mainHeader')}</h1>
+                <h3>{t('mainSlogan')}</h3>
                 </div>
                 <div className='mainBrandsPhoto'>
                     <div className='mainBrand1'></div>
@@ -20,6 +18,7 @@ const Homepage = ({ text }) => {
                 </div>
             </div>    
         </div>
+      </div>
         </>
     )
 }

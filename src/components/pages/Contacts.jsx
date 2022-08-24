@@ -1,23 +1,34 @@
-import './Contacts.css';
+import { useState, useEffect } from 'react';
 
-const Contacts = ({ text }) => {
+const Contacts = ({t, language}) => {
+    const [textContact, setTextContact] = useState([]);
+    useEffect(() => {
+      const getContact = async () => {
+        const res = await fetch('https://farm-kg.herokuapp.com/contacts/', {method: "GET"})
+        .then(res => res.json())
+        .then(data => setTextContact(data[0]))
+      }
+      getContact()
+    }, [])
+  
     return (
-        <div className="contactsMain">
+        <div className='content'>
+          <div className="contactsMain">
             <div className="contactsContent">
                 <div className='leftColumn'>
-                    <div className='contactHeader'><p>{text.contactContactUs}</p></div>
+                    <div className='contactHeader'><p>{t('contactContactUs')}</p></div>
                     <div className='callUs'>
-                        <h3>{text.contactCallUs}</h3>
-                        <h1>{text.contactPhone}</h1>
+                        <h3>{t('contactCallUs')}</h3>
+                        <h1>{textContact.phone_number}</h1>
                     </div>
                     <div className='contactIcon'>
                         <div className='contactLineItems'>
                             <div className='mailIcon'></div>
-                            <h3>{text.contactMain}</h3>
+                            <h3>{textContact.email}</h3>
                         </div>
                         <div className='contactLineItems'>
                             <div className='addressIcon'></div>
-                            <h3>{text.contactAddress}</h3>
+                            <h3>{language === 'ru' ? textContact.address_ru : textContact.address_en}</h3>
                         </div>
                     </div>
                 </div>
@@ -26,6 +37,7 @@ const Contacts = ({ text }) => {
                 </div>
             </div>
         </div>
+      </div>
     )
 }
 

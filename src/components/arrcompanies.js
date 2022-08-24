@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Companies = ({ companies, loading, t, language }) => {
+
+const ArrCompanies = ({ companies, loading, t, language }) => {
 
     if (loading) {
         return <h2>Loading</h2>
@@ -11,10 +13,10 @@ const Companies = ({ companies, loading, t, language }) => {
              {companies.map(companie => { return (
                   <div id={companie.id} className='companie' key={companie.id}><h1>{language === 'ru' ? companie.name_ru : companie.name_en}</h1>
                   <img src={companie.photo} alt={language === 'ru' ? companie.name_ru : companie.name_en}></img>
-                  <div className='morebutton'><h3>{t('companiesMore')}</h3></div></div>
+                  <Link to={`/${companie.id}/${companie.name}`}><div className='morebutton'><h3>{t('companiesMore')}</h3></div></Link></div>
                   )})}
         </div>
     )
 }
 
-export {Companies};
+export {ArrCompanies};
