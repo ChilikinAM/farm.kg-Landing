@@ -54,8 +54,8 @@ header {
 .mainMenu a:hover {
   text-decoration: underline;
 }
-.mainMenu a:active {
-  color: #FFB703;
+.active-link {
+  color: #FFB703 !important;
 }
 .headerRight {
   display: flex;
@@ -296,10 +296,10 @@ main {
   color: #337347;
 }
 .companiesNav li:active {
-  background: rgba(51, 115, 71, 0.52);
+  background: rgba(51, 115, 71, 0.52) !important;
 }
 .companiesNav li a:active {
-  color: #FFF4F4;
+  color: #FFF4F4 !important;
 }
 .btnBack {
   display: flex;

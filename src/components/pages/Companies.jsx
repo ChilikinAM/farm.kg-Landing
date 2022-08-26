@@ -7,7 +7,7 @@ const Companies = ({t, language, setIdCompany}) => {
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [companiesPerPage] = useState(6);
+    const [companiesPerPage] = useState(3);
   
     useEffect( () => {
       const getCompanies = async () => {

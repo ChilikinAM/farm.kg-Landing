@@ -15,7 +15,7 @@ const CompanieSinglPage = ({language }) => {
       getContact()
     }, [])
 
-    const [imgCompany, setImgCompany] = useState([]);
+   /* const [imgCompany, setImgCompany] = useState([]);
     useEffect(() => {
       const getContact = async () => {
         const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"})
@@ -23,7 +23,7 @@ const CompanieSinglPage = ({language }) => {
         .then(data => setImgCompany(data.products_photos))
       }
       getContact()
-    }, [])
+    }, [])*/
 
     // Слайдер продуктов
     var settings = {
@@ -88,7 +88,7 @@ const CompanieSinglPage = ({language }) => {
         </div>
         <div className='companieSlided'>
                 <Slider {...settings}>
-                {imgCompany.map(companie => { return (
+                {textCompany.products_photos?.map(companie => { return (
                     <div key={companie.id} className='imgSlider'>
                       <img src={companie.photo}></img>
                     </div>

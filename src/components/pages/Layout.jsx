@@ -15,9 +15,9 @@ const Layout = ( {t, handleLanguageChange, language} ) => {
       <header>
             <div className='logo'><img src={logo} onClick={scrollToTop}></img></div>
                 <div className='mainMenu'>
-                    <Link to='about' spy={true} smooth={true} offset={-80} duration={500}>{t('menuAbout')}</Link>
-                    <Link to='companies' spy={true} smooth={true} offset={-80} duration={500}>{t('menuCompanies')}</Link>
-                    <Link to='contacts' spy={true} smooth={true} offset={-80} duration={500}>{t('menuContacts')}</Link>
+                    <Link activeClass="active-link" to='about' spy={true} smooth={true} offset={-80} duration={500}>{t('menuAbout')}</Link>
+                    <Link activeClass="active-link" to='companies' spy={true} smooth={true} offset={-80} duration={500}>{t('menuCompanies')}</Link>
+                    <Link activeClass="active-link" to='contacts' spy={true} smooth={true} offset={-80} duration={500}>{t('menuContacts')}</Link>
                 </div>  
             <div className='headerRight'>
                 <div className='search'>
