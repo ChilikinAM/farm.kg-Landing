@@ -1,20 +1,13 @@
 import React from "react";
+import { Link } from "react-scroll";
 
-const Pagination = ({ companiesPerPage, totalCompanies, paginate}) => {
-    const pageNumbers = []
-
-    for (let i = 1; i <= Math.ceil(totalCompanies / companiesPerPage); i++) {
-        pageNumbers.push(i);
-    }
-
+const Pagination = ({ pageNumbers, paginate, currentPage}) => {
     return (
            <ul className="pagination">
             {
                 pageNumbers.map(number => (
-                    <li className={isActive => "pagination-item" + (isActive ? " active" : "")} key={number}>
-                        <a href="/#companies" className={isActive => "pagination-link" + (isActive ? " active" : "")} onClick={() => paginate(number)}>
-                            {number}
-                        </a>
+                    <li className={(currentPage == number ? "pagination-item-active" : "")} onClick={() => paginate(number)} key={number}>
+                        <Link className={(currentPage == number ? "pagination-link-active" : "")} to='companies' spy={true} smooth={true} offset={-80} duration={500} onClick={() => paginate(number)}>{number}</Link>
                     </li>
                 ))
             }

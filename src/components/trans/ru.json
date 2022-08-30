@@ -2,9 +2,11 @@
     "menuAbout": "О нас",
     "menuCompanies": "Компании",
     "menuContacts": "Контакты",
+    "Search": "Поиск",
     "mainHeader": "Kyrgyz Brands",
     "mainSlogan": "Традиционные Кыргызские продукты сделанные с любовью",
     "contactContactUs": "Наши контакты",
     "contactCallUs": "Набери",
-    "companiesMore": "Больше"
+    "companiesMore": "Больше",
+    "nameProducts": "Продукты"
 }

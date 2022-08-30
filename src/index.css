@@ -66,27 +66,32 @@ header {
 .search {
   display: flex;
   margin-right: 5%;
-}
-.search input {
   width: 190px;
   height: 40px;
   border-radius: 13px;
   background-color: #337347;
   border: 2px white solid;
+  background-image: url(./components/img/search.svg);
+  background-position: 10px;
+  background-repeat: no-repeat;
+}
+.search input {
+  color: white;
+  padding-left: 40px;
+  background: none;
+  border: none;
+  outline: none;
 }
 .search input::placeholder {
-  padding-left: 40px;
-  height: 20px;
-  width: 190px;
   color: white;
-  background: url(./components/img/search.svg) no-repeat;
-  background-position: 10px;
 }
-.search input:active {
+/*.search input:focus {
   color: white;
   border: 2px white solid;
   padding-left: 20px;
-}
+  background: url(./components/img/search.svg) no-repeat;
+  background-position: 10px;
+}*/
 .language {
   display: flex;
   margin-right: 5%;
@@ -103,17 +108,18 @@ main {
 }
 .content {
   /*padding-top: 80px;*/
-  height: 100vh;
+  /*height: 100vh;*/
 }
 .componentPage {
   display: flex;
   height: 100vh;
-  
+  min-height: 751px;
 }
 .arnamentLeft {
   position: absolute;
   width: 75px;
   height: 100vh;
+  min-height: 751px;
   left: 3%;  
   background: url(./components/img/arnament.svg) repeat-y;
 }
@@ -121,6 +127,7 @@ main {
     position: absolute;
     width: 75px;
     height: 100vh;
+    min-height: 751px;
     right: 3%;  
     background: url(./components/img/arnament.svg) repeat-y;
   }
@@ -128,6 +135,7 @@ main {
   .homepageMain {
     width: 80%;
     height: 100vh;
+    min-height: 751px;
     margin: auto;
   }
   .mainContent {
@@ -136,12 +144,14 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 751px;
   }
   .slogan {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: 163px;
     gap: 15px;
   }
@@ -205,8 +215,10 @@ main {
 /* О нас */ 
   .aboutMain {
     display: flex;
+    justify-content: center;
     width: 80%;
-    height: 93vh;
+    height: 100vh;
+    min-height: 848px;
     margin: auto;
 }
 .aboutLeft {
@@ -262,7 +274,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 1250px;
+  min-height: 1475px;
   margin: 12px auto;
 }
 .companiesNav {
@@ -295,11 +307,11 @@ main {
   line-height: 12px;
   color: #337347;
 }
-.companiesNav li:active {
-  background: rgba(51, 115, 71, 0.52) !important;
-}
-.companiesNav li a:active {
+.pagination-link-active {
   color: #FFF4F4 !important;
+}
+.pagination-item-active {
+  background: rgba(51, 115, 71, 0.52) !important;
 }
 .btnBack {
   display: flex;
@@ -308,6 +320,9 @@ main {
   padding-right: 85px;
   background: url(./components/img/backicon.svg) no-repeat;
 }
+.btnBack[disabled] {
+  pointer-events: none !important;
+}
 .btmNext {
   display: flex;
   width: 16px;
@@ -315,6 +330,9 @@ main {
   padding-left: 85px;
   background: url(./components/img/backicon.svg) no-repeat;
   transform: rotate(180deg);
+}
+.btmNext[disabled] {
+  pointer-events: none !important;
 }
 .companieRotate {
   width: 100%;
@@ -332,6 +350,7 @@ main {
   align-items: center;
   height: 550px;
   width: 285px;
+  margin-top: 48px;
 }
 .companieName {
   width: 119px;
@@ -375,11 +394,17 @@ main {
   color: #FFFFFF;
 }
 /* Стили одна компания */
+.singlPageComanie{
+  width: 90%;
+  height: 100vh;
+  min-height: 944px;
+  margin: auto;
+}
 .backicon {
   width: 16px;
   height: 16px;
   background-image: url(./components/img/backicon.svg);
-  margin-left: 180px;
+  margin-left: 6%;
   margin-top: 130px;
 }
 .singlCompanie {
@@ -408,15 +433,58 @@ main {
   line-height: 30px; 
   color: #2E401C;
 }
-.singlCompanie .rigth {
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 40%;
   padding-right: 2%;
 }
-.singlCompanie .rigth .logo {
-  width: 380px;
+.companyLogo {
+  display: flex;
+  width: 400px;
   height: 401px;
-  background: url(./components/img/singlLogaSupara.svg);
-  border-radius: 20px;
+}
+.img{
+  display: flex;
+  width: 400px;
+  height: 401px;
+}
+.url{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 201px;
+  height: 43.13px;
+  background: #337347;
+  border-radius: 8.20408px 0px;
+}
+.url a {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24.6122px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.companieSlided {
+  width: 100%;
+}
+.imgSlider {
+  width: 297px;
+  height: 258px;
+}
+.nameProducts h3 {
+  width: 143px;
+  height: 43px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 43px;
+
+color: #337347;
 }
 /* Конец - Стили одна компания */
 /* Стили контакты */
@@ -426,6 +494,7 @@ main {
     align-items: center;
     width: 80%;
     height: 100vh;
+    min-height: 944px;
     margin: auto;
 }
 .contactsContent {

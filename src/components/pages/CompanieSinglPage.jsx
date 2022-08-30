@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Slider from "react-slick";
 
+import '../style/slick-theme.min.css';
+import '../style/slick.min.css';
 
-const CompanieSinglPage = ({language }) => {
+
+const CompanieSinglPage = ({language, t }) => {
     const {id} = useParams();
     const [textCompany, setTextCompany] = useState('');
     useEffect(() => {
       const getContact = async () => {
-        const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"})
-        .then(res => res.json())
-        .then(data => setTextCompany(data))
+        const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"});
+        const data = await res.json();
+        setTextCompany(data);
       }
       getContact()
     }, [])
@@ -63,30 +66,20 @@ const CompanieSinglPage = ({language }) => {
     // Конец слайдера продуктов
 
     return (
-        <div className='content'>
-            <link
-  rel="stylesheet"
-  type="text/css"
-  charSet="UTF-8"
-  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-/>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-/>
-      <div><Link to="/"><div className="backicon"></div></Link>
+    <div className='content'>
+      <div className='singlPageComanie'><Link to="/"><div className="backicon"></div></Link>
             <div className='singlCompanie'>
             <div className='left'>
             <h1>{language === 'ru' ? textCompany.name_ru : textCompany.name_en}</h1>
             <h3>{language === 'ru' ? textCompany.information_ru : textCompany.information_en}</h3>
             </div>
             <div className='right'>
-            <div className='logo'><img src={textCompany.logo}></img></div>
+            <div className='companyLogo'><img className='img' src={textCompany.logo}></img></div>
             <div className='url'><a href={textCompany.web_site} target="blank">{language === 'ru' ? textCompany.name_ru : textCompany.name_en}</a></div>
             </div>
         </div>
         <div className='companieSlided'>
+          <div className='nameProducts'><h3>{t('nameProducts')}</h3></div>
                 <Slider {...settings}>
                 {textCompany.products_photos?.map(companie => { return (
                     <div key={companie.id} className='imgSlider'>
@@ -110,7 +103,7 @@ const CompanieSinglPage = ({language }) => {
 
         </div>
       </div>
-      </div>
+    </div>
 )
 }
 

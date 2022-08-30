@@ -12,14 +12,21 @@ const Companies = ({t, language, setIdCompany}) => {
     useEffect( () => {
       const getCompanies = async () => {
         setLoading(true);
-        const res = await fetch('https://farm-kg.herokuapp.com/company/', {method: "GET"})
-        .then(res => res.json())
-        .then(data => setCompanies(data));
+        const res = await fetch('https://farm-kg.herokuapp.com/company/', {method: "GET"});
+        const data = await res.json();
+        setCompanies(data);
         setLoading(false)
       }
   
       getCompanies()
     }, [])
+
+    const totalCompanies = companies.length
+    const pageNumbers = []
+
+    for (let i = 1; i <= Math.ceil(totalCompanies / companiesPerPage); i++) {
+        pageNumbers.push(i);
+    }
   
     const lastCompanieIndex = currentPage * companiesPerPage;
     const fistCompaniesIndex = lastCompanieIndex - companiesPerPage;
@@ -32,13 +39,13 @@ const Companies = ({t, language, setIdCompany}) => {
     return (
            <div className='companies'>
           <div className='companiesNav'>
-            <div className="btnBack" onClick={backPage}></div>
+            <div className="btnBack" disabled={(currentPage == 1 ? "disabled" : "")} onClick={backPage}></div>
               <Pagination 
-            companiesPerPage={companiesPerPage}
-            totalCompanies={companies.length}
             paginate={paginate}
+            currentPage={currentPage}
+            pageNumbers={pageNumbers}
           />
-            <div className="btmNext" onClick={nextPage}></div> 
+            <div className="btmNext" disabled={(currentPage == (pageNumbers.length) ? "disabled" : "")} onClick={nextPage}></div> 
           </div>
             <ArrCompanies companies={currentCompanies} loading={loading} t={t} language={language} setIdCompany={setIdCompany} />
         </div>

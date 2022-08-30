@@ -5,7 +5,6 @@ import { Contacts } from './Contacts';
 
 
 const MainLandingPage = ({ t, language }) => {
-
     return (
         <>
         <section id='first'><Homepage t={t} language={language} /></section>

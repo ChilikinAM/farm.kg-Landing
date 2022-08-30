@@ -4,9 +4,9 @@ const About = ({ t, language }) => {
     const [textAboutUs, setTextAboutUs] = useState([]);
     useEffect(() => {
       const getAboutUs = async () => {
-        const res = await fetch('https://farm-kg.herokuapp.com/about_us/', {method: "GET"})
-        .then(res => res.json())
-        .then(data => setTextAboutUs(data[0]))
+        const res = await fetch('https://farm-kg.herokuapp.com/about_us/', {method: "GET"});
+        const data = await res.json();
+        setTextAboutUs(data[0]);
       }
       getAboutUs()
     }, [])

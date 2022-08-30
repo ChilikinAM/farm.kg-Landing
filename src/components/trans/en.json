@@ -2,9 +2,11 @@
     "menuAbout": "About us",
     "menuCompanies": "Companies",
     "menuContacts": "Contacts",
+    "Search": "Search",
     "mainHeader": "Kyrgyz Brands",
     "mainSlogan": "Traditional Kyrgyz products made with love",
     "contactContactUs": "Contact us",
     "contactCallUs": "Call us",
-    "companiesMore": "More"
+    "companiesMore": "More",
+    "nameProducts": "Products"
 }
