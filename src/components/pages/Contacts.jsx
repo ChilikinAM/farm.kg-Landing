@@ -1,4 +1,14 @@
 import { useState, useEffect } from 'react';
+import { YMaps, Map, Placemark } from "react-yandex-maps";
+
+const mapData = {
+    center: [42.87736994858796, 74.59217561950685],
+    zoom: 17,
+    controls: ['zoomControl', 'fullscreenControl']
+  };
+  
+  const coordinates = [42.877729948588, 74.59210561950685];
+  
 
 const Contacts = ({t, language}) => {
     const [textContact, setTextContact] = useState([]);
@@ -10,9 +20,7 @@ const Contacts = ({t, language}) => {
       }
       getContact()
     }, [])
-
-    // 2GIS map
-
+    
 
     return (
         <div className='content'>
@@ -37,7 +45,12 @@ const Contacts = ({t, language}) => {
                 </div>
                 <div className='rightColumn'>
                     <div className='contactMap'>
-
+                    {/*<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Abe20b7f06ce4ac2f72ff17bcd466cf8a63b4b2c8043c66a8f6c4df0b3575d031&amp;source=constructor" width="420" height="472" frameborder="0"></iframe>*/}
+                    <YMaps>
+                        <Map defaultState={mapData} modules={['control.ZoomControl', 'control.FullscreenControl']} className='yaMap'>
+                            <Placemark geometry={coordinates} />
+                        </Map>
+                    </YMaps>
                     </div>
                 </div>
             </div>

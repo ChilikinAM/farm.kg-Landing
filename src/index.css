@@ -617,5 +617,12 @@ color: #337347;
     margin: auto;
     width: 420px;
     height: 472px;
-    background: url(./components/img/Bishkek.svg) no-repeat;
+    /*background: url(./components/img/Bishkek.svg) no-repeat;*/
+    display: flex;
+    justify-content: center;
+}
+/* Ya Map */
+.yaMap {
+  width: 420px;
+  height: 472px;
 }

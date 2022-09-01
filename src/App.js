@@ -15,6 +15,8 @@ import i18n from './i18n';
 
 
 function App() {
+
+  // Function Translate
   const {t} = useTranslation();
   const [language, setLanguage] = useLocalStorage('language', 'ru');
   const handleLanguageChange = () => {
@@ -27,15 +29,6 @@ function App() {
       setLanguage('en')
     }
   }
-
-  // AbuotUS Data
-
-
-  //Pagination Companies
-  
-
-  // Contact Data
- 
 
   //Модалка - Пока не нужна
 
