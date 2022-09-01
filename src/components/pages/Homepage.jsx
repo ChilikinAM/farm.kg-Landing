@@ -1,4 +1,4 @@
-const Homepage = ({ t, language }) => {
+const Homepage = ({ t }) => {
 
     return (
         <>

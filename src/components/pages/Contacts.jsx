@@ -10,7 +10,10 @@ const Contacts = ({t, language}) => {
       }
       getContact()
     }, [])
-  
+
+    // 2GIS map
+
+
     return (
         <div className='content'>
           <div className="contactsMain">
@@ -33,7 +36,9 @@ const Contacts = ({t, language}) => {
                     </div>
                 </div>
                 <div className='rightColumn'>
-                    <div className='contactMap'></div>
+                    <div className='contactMap'>
+
+                    </div>
                 </div>
             </div>
         </div>

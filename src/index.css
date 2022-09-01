@@ -74,6 +74,7 @@ header {
   background-image: url(./components/img/search.svg);
   background-position: 10px;
   background-repeat: no-repeat;
+ /* position: absolute;*/
 }
 .search input {
   color: white;
@@ -82,8 +83,37 @@ header {
   border: none;
   outline: none;
 }
+.searchSinglResult {
+  width: 195px;
+  display: flex;
+  flex-direction: row;
+}
+.search ul {
+  position: relative;
+  top: 25px;
+  right: 250px;
+}
+.search li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items:center;
+  gap: inherit;
+  width: 195px;
+  border: 2px #337347 solid;
+  border-radius: 13px;
+  background-color: white;
+}
+.searchCompanyLogo {
+  width: 50px;
+  height: 50px;
+}
 .search input::placeholder {
   color: white;
+}
+.headPadding {
+  width: 100%;
+  height: 50px;
 }
 /*.search input:focus {
   color: white;
@@ -101,7 +131,6 @@ header {
   height: 20px;
 }
 main {
-  /*margin-top: 80px;*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -455,7 +484,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 201px;
+  min-width: 201px;
   height: 43.13px;
   background: #337347;
   border-radius: 8.20408px 0px;

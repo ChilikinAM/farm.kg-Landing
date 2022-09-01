@@ -4,13 +4,12 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import logo from '../img/logo.svg';
 import languageBtn from '../img/language.svg';
 
-    const Layout = ( {t, handleLanguageChange, language} ) => {
+    const Layout = ( {t, handleLanguageChange, language, onFocusImput, onInputChange, value} ) => {
     const scrollToTop = () => {
         scroll.scrollToTop();
       };
         
     const params = useParams();
-    console.log(params);
     let navigate = useNavigate();
 
     
@@ -34,6 +33,9 @@ import languageBtn from '../img/language.svg';
         }
     }
 
+    //https://farm-kg.herokuapp.com/company/?search=
+
+
     return (
       <>
       <header>
@@ -43,7 +45,12 @@ import languageBtn from '../img/language.svg';
                 </div>  
             <div className='headerRight'>
                 <div className='search'>
-                    <input type="text" placeholder={t('Search')}></input>
+                    <input value={value} onFocus={onFocusImput} onChange={onInputChange} placeholder={t('Search')}></input>
+                    {/*
+                        <ul>
+                            {result.map((res) => (
+                            <li key={res.id}><div className='searchSinglResult' onClick={() => redirectToResul(res.id, res.name)}><img className='searchCompanyLogo' src={res.photo}></img><h3>{language === 'ru' ? res.name_ru : res.name_en}</h3></div></li>))}
+                            </ul>*/}
                 </div>
                 <div className='language' onClick={handleLanguageChange}>
                     <img src={languageBtn} alt='Сменить язык' onClick={handleLanguageChange}></img>

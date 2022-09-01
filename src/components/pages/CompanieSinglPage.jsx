@@ -9,13 +9,15 @@ import '../style/slick.min.css';
 const CompanieSinglPage = ({language, t }) => {
     const {id} = useParams();
     const [textCompany, setTextCompany] = useState('');
+    
+    const getContact = async () => {
+      const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"});
+      const data = await res.json();
+      setTextCompany(data);
+    }
+
     useEffect(() => {
-      const getContact = async () => {
-        const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"});
-        const data = await res.json();
-        setTextCompany(data);
-      }
-      getContact()
+        getContact()
     }, [])
 
    /* const [imgCompany, setImgCompany] = useState([]);
@@ -86,19 +88,6 @@ const CompanieSinglPage = ({language, t }) => {
                       <img src={companie.photo}></img>
                     </div>
                   )})}
-
-                    <div className='imgSlider'>
-                        <h3><img src='https://github.com/ChilikinAM/farm.kg-Landing/raw/main/src/components/img/mainBrand1.svg'></img></h3>
-                    </div>
-                    <div className='imgSlider'>
-                        <h3><img src='https://github.com/ChilikinAM/farm.kg-Landing/raw/main/src/components/img/mainBrand1.svg'></img></h3>
-                    </div>
-                    <div className='imgSlider'>
-                        <h3><img src='https://github.com/ChilikinAM/farm.kg-Landing/raw/main/src/components/img/mainBrand1.svg'></img></h3>
-                    </div>
-                    <div className='imgSlider'>
-                        <h3><img src='https://github.com/ChilikinAM/farm.kg-Landing/raw/main/src/components/img/mainBrand1.svg'></img></h3>
-                    </div>
                 </Slider>                
 
         </div>
