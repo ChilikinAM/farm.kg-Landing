@@ -11,7 +11,7 @@ const CompanieSinglPage = ({language, t }) => {
     const [textCompany, setTextCompany] = useState('');
     
     const getContact = async () => {
-      const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"});
+      const res = await fetch(`https://farmkg1.herokuapp.com/company/${id}`, {method: "GET"});
       const data = await res.json();
       setTextCompany(data);
     }
@@ -59,7 +59,7 @@ const CompanieSinglPage = ({language, t }) => {
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 1,
+              slidesToShow: 2,
               slidesToScroll: 1
             }
           }
@@ -80,6 +80,7 @@ const CompanieSinglPage = ({language, t }) => {
             <div className='url'><a href={textCompany.web_site} target="blank">{language === 'ru' ? textCompany.name_ru : textCompany.name_en}</a></div>
             </div>
         </div>
+        <div className='url-mobile'><a href={textCompany.web_site} target="blank">{language === 'ru' ? textCompany.name_ru : textCompany.name_en}</a></div>
         <div className='companieSlided'>
           <div className='nameProducts'><h3>{t('nameProducts')}</h3></div>
                 <Slider {...settings}>

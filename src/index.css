@@ -29,8 +29,11 @@ header {
   height: 54px;
   left: 100px;
   top: 8px;
-  /*background: url(./components/img/logo.svg);*/
+  background: url(./components/img/logo.svg) no-repeat;
+  background-size: 100% 100%;
 }
+.burger-btn {display: none;}
+.mobile-menu {display: none;}
 .mainMenu {
   display: flex;
   justify-content: space-evenly;
@@ -83,31 +86,6 @@ header {
   border: none;
   outline: none;
 }
-.searchSinglResult {
-  width: 195px;
-  display: flex;
-  flex-direction: row;
-}
-.search ul {
-  position: relative;
-  top: 25px;
-  right: 250px;
-}
-.search li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items:center;
-  gap: inherit;
-  width: 195px;
-  border: 2px #337347 solid;
-  border-radius: 13px;
-  background-color: white;
-}
-.searchCompanyLogo {
-  width: 50px;
-  height: 50px;
-}
 .search input::placeholder {
   color: white;
 }
@@ -125,6 +103,18 @@ header {
 .language {
   display: flex;
   margin-right: 5%;
+  position: relative;
+}
+.language:hover::after {
+  content: attr(data-title);
+  position: absolute; /* Абсолютное позиционирование */
+  right: -3px; top: 20px; /* Положение подсказки */
+  z-index: 1; /* Отображаем подсказку поверх других элементов */
+  background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+  font-family: Arial, sans-serif; /* Гарнитура шрифта */
+  font-size: 11px; /* Размер текста подсказки */
+  padding: 5px 5px; /* Поля */
+  border: 1px solid #333; /* Параметры рамки */
 }
 .language img {
   width: 20px;
@@ -133,11 +123,10 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 .content {
-  /*padding-top: 80px;*/
-  /*height: 100vh;*/
+  position: relative;
 }
 .componentPage {
   display: flex;
@@ -161,6 +150,9 @@ main {
     background: url(./components/img/arnament.svg) repeat-y;
   }
   /* Главная */
+  .mobileLogoMain {
+    display: none;
+  }
   .homepageMain {
     width: 80%;
     height: 100vh;
@@ -242,6 +234,14 @@ main {
     align-self: flex-end;
   }
 /* О нас */ 
+.arnamentRightAbout {
+  position: absolute;
+  width: 75px;
+  height: 100vh;
+  min-height: 751px;
+  right: 3%;  
+  background: url(./components/img/arnament.svg) repeat-y;
+}
   .aboutMain {
     display: flex;
     justify-content: center;
@@ -255,7 +255,7 @@ main {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 45%;
+    width: 40%;
 }
 .aboutLeft h1 {
     font-family: 'Gilroy';
@@ -277,7 +277,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
-    width: 55%;
+    width: 50%;
 }
 .aboutImg1 {
     position: absolute;
@@ -496,7 +496,9 @@ main {
   font-size: 24.6122px;
   line-height: 30px;
   color: #FFFFFF;
+  padding: 8px;
 }
+.url-mobile {display: none;}
 .companieSlided {
   width: 100%;
 }
@@ -626,3 +628,440 @@ color: #337347;
   width: 420px;
   height: 472px;
 }
+
+/* Мобильная версия */
+
+@media (max-width: 480px) {
+  /* Header*/
+  header {
+    width: 120%;
+    height: 40px;
+    position: sticky; 
+  }
+  .logo {
+    width: 23.15px;
+    height: 25px;
+    background: url(./components/img/logo_min.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  .mainMenu {
+    display: none;
+  }
+  .burger-btn {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+  .burger-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+  }
+  .burger-btn span {
+    position: absolute;
+    top: 9px;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+  }
+  .burger-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+  }
+  .mobile-menu {display: flex;}
+  .burgeMenu {
+    position: fixed;
+    width: 100vw;
+    height: 200px;
+    top: 40px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: #337347;
+    border: 1px white solid;
+    transform: translateX(-100%);
+    transition: all 0.2s;
+  }
+  .burgeMenu.active {
+    transform: translateX(0);
+  }
+  .burgeMenu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+  }
+  .burgeMenu a:hover {
+    text-decoration: underline;
+  }
+  .headerRight {
+    width: 80%;
+  }
+  .search {
+    width: 113px;
+    height: 16px;
+    background-size: 8.46px 8.46px;
+    background-position: 5px;
+    border-radius: 5px;
+  }
+  .search input {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 9px;
+    padding-left: 15px;
+  }
+  .headPadding {
+    height: 40px;
+  }
+  /* Гавная Мобилка */
+  .arnamentLeft {
+    bottom: 195px;
+    width: 26px;
+    height: 345px;
+    background-size: 26px;
+    transform: rotate(90deg);
+  }
+  .arnamentRight {
+    top: 400px;
+    width: 26px;
+    height: 345px;
+    background-size: 26px;
+    transform: rotate(90deg);
+    }
+    .homepageMain {
+      width: 100%;
+      height: 852px;
+    }
+    .mainContent {
+      min-height: 852px;
+    }
+    .slogan {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 414px;
+      height: 244px;
+      gap: 15px;
+      background: #337347;
+    }
+    .mainContent h1 {
+      position: absolute;
+      width: 157px;
+      height: 29px;
+      left: 196px;
+      top: 33px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      text-align: right;
+      color: #FFB703;
+      height: 99px;
+      margin-block-start: 0px;
+      margin-block-end: 0px;
+    }
+    .mainContent h3 {
+      display: flex;
+      position: absolute;
+      width: 229px;
+      height: 36px;
+      left: 123px;
+      top: 141px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      text-align: right;
+      color: #FFFFFF;
+      margin-block-start: 0px;
+      margin-block-end: 0px;
+    }
+    .mobileLogoMain {
+      position: absolute;
+      display: flex;
+      width: 290px;
+      height: 80px;
+      left: 62px;
+      top: 54px;
+      background: url(./components/img/logo.svg) no-repeat;
+      background-size: 100% 100%;
+    }
+    .mainBrandsPhoto {
+      position: absolute;
+      top: 320px;
+      flex-wrap: wrap;
+      height: 283px;
+      gap: 30px 45px;
+    }
+    .mainBrand1{
+      width: 126.34px;
+      height: 190px;
+      background-size: 100% 100%;
+    }
+    .mainBrand2{
+      width: 126.34px;
+      height: 190px;
+      background-size: 100% 100%;
+    }
+    .mainBrand3{
+      width: 126.34px;
+      height: 190px;
+      background-size: 100% 100%;
+    }
+    .mainBrand4{
+      width: 126.34px;
+      height: 190px;
+      background-size: 100% 100%;
+    }
+    /* О нас */ 
+    .arnamentRightAbout {
+      display: none;
+    }
+    .aboutMain {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+    .aboutLeft {
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .aboutLeft h1 {
+      /*position: absolute;
+      top: -37px;*/
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 38px;
+      text-align: center;
+      color: #FFB703;      
+    }
+    .aboutLeft h3 {
+      /*position: absolute;
+      top: 26px;*/
+      width: 80%;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 29px;
+    }
+    .aboutRight {
+        width: 100%;
+        height: 100%;
+        min-height: 365px;
+        /*position: absolute;
+        top: 623px;*/
+    }
+    .aboutImg1 {
+        width: 185px;
+        height: 266px;
+        background-size: 100% 100%;
+        left: 130px;
+        top: 110px;
+        margin-top: 0;
+    }
+    .aboutImg2 {
+        width: 185px;
+        height: 266px;
+        background-size: 100% 100%;
+    }
+    /* Company */
+    .companies{
+      width: 80%;
+      min-height: 850px;
+      margin: 12px auto;
+    }
+    .companieRotate {
+      gap: 39px 55px;
+    }
+    .companie {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 240px;
+      width: 112px;
+      margin-top: 30px;
+    }
+    .companieName {
+      width: 44px;
+      height: 16px;
+    }
+    .companie h1 {
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px; 
+    }
+    .companie img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 112px;
+      height: 180px;
+      border-radius: 20px;
+    }
+    .morebutton{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 56px;
+      height: 19px;
+      margin-top: 22px;
+      background: #337347;
+      border-radius: 8.20408px 0px;
+    }
+    .companie h3 {
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    /* Стили контакты */
+    .contactsMain {
+      min-height: 844px;
+    }
+    .contactsContent {
+      flex-direction: column;
+      height: 753px;
+    }
+    .leftColumn {
+      width: 100%;
+    }
+    .contactHeader p{
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .callUs {
+      width: 228.45px;
+      height: 228.45px;
+    }
+    .callUs h3 {
+      padding-top: 24px;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+    }
+    .callUs h1{
+      font-size: 20px;
+      line-height: 24px;
+    }
+    .contactLineItems h3 {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    .mailIcon {
+      width: 20px;
+      height: 18px;
+      background: url(./components/img/mailIcon.svg) no-repeat;
+    }
+    .addressIcon {
+      width: 18px;
+      height: 22px;
+      background: url(./components/img/addressIcon.svg) no-repeat;
+    }
+    .contactMap {
+      width: 250px;
+      height: 291px;
+      align-items: center;
+    }
+    /* Ya Map */
+    .yaMap {
+    width: 220px;
+    height: 261px;
+    }
+    /* Стили одна компания */
+    .backicon {
+      width: 13px;
+      height: 13px;
+      background-size: 100% 100%;
+      margin-top: 30px;
+    }
+    .singlCompanie {
+      width: 100%;
+    }
+    .singlCompanie .left {
+      width: 100%;
+      min-width: 338px;
+      margin-top: 90px;
+    }
+    .singlCompanie .left h1 {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    .singlCompanie .left h3 {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    .right {
+      width: 100%;
+    }
+    .companyLogo {
+      position: absolute;
+      top: 30px;
+      left: 138px;
+      width: 140px;
+      height: 90px;
+    }
+    .img{
+      display: flex;
+      width: 140px;
+      height: 90px;
+    }
+    .url {display: none;}
+    .url-mobile{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+      min-width: 66px;
+      height: 19px;
+      background: #337347;
+      border-radius: 8.20408px 0px;
+    }
+    .url-mobile a {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+      color: #FFFFFF;
+    }
+    .companieSlided {
+      width: 100%;
+    }
+    .imgSlider {
+      width: 120px;
+      height: 160px;
+    }
+    .slick-slider {
+      height: 160px;
+    }
+    .slick-slider img {
+      width: 120px !important;
+      height: 160px !important;
+    }
+    .nameProducts {
+      display: flex;
+      justify-content: center;
+      height: 50px;
+    }
+    .nameProducts h3 {
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+    }
+ }

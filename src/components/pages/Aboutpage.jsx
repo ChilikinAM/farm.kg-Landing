@@ -4,7 +4,7 @@ const About = ({ t, language }) => {
     const [textAboutUs, setTextAboutUs] = useState([]);
     useEffect(() => {
       const getAboutUs = async () => {
-        const res = await fetch('https://farm-kg.herokuapp.com/about_us/', {method: "GET"});
+        const res = await fetch('https://farmkg1.herokuapp.com/about_us/', {method: "GET"});
         const data = await res.json();
         setTextAboutUs(data[0]);
       }
@@ -14,7 +14,7 @@ const About = ({ t, language }) => {
     return (
         <>
        <div className='content'>
-            <div className="arnamentRight"></div>
+            <div className="arnamentRightAbout"></div>
             <div className="aboutMain">
                 <div className="aboutLeft">
                     <h1>{language === 'ru' ? textAboutUs.name_ru : textAboutUs.name_en}</h1>

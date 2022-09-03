@@ -45,7 +45,7 @@ function App() {
   let navigate = useNavigate();
  
   const getResult = async (search) => {
-      const res = await fetch(`https://farm-kg.herokuapp.com/company/?search=${search}`, {method: "GET"});
+      const res = await fetch(`https://farmkg1.herokuapp.com/company/?search=${search}`, {method: "GET"});
       const data = await res.json();
       setResult(data);
   }
@@ -56,7 +56,7 @@ function App() {
     }
   
   const onFocusImput = (event) => {
-      navigate(`Search=1${value}`);
+      navigate(`Search=${value}`);
       getResult(event.target.value);
   }  
 
@@ -69,7 +69,7 @@ function App() {
           t={t}
           language={language} />} />
           <Route path='Companies' element={<Companies t={t} language={language} />} />
-          <Route path='Search=:value' element={<Search t={t} language={language} setValue={setValue} result={result} />} />
+          <Route path='Search:value' element={<Search t={t} language={language} setValue={setValue} result={result} />} />
           <Route path=':id/:title' element={<CompanieSinglPage t={t} language={language} />} />
           <Route path='*' element={<Notfoundpage t={t} language={language} />} />
         </Route>

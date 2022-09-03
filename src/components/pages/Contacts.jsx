@@ -14,7 +14,7 @@ const Contacts = ({t, language}) => {
     const [textContact, setTextContact] = useState([]);
     useEffect(() => {
       const getContact = async () => {
-        const res = await fetch('https://farm-kg.herokuapp.com/contacts/', {method: "GET"});
+        const res = await fetch('https://farmkg1.herokuapp.com/contacts/', {method: "GET"});
         const data = await res.json();
         setTextContact(data[0]);
       }

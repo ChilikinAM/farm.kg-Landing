@@ -8,6 +8,7 @@ const Homepage = ({ t }) => {
         <div className="homepageMain">
             <div className='mainContent'>
                 <div className='slogan'><h1>{t('mainHeader')}</h1>
+                <div className="mobileLogoMain"></div>
                 <h3>{t('mainSlogan')}</h3>
                 </div>
                 <div className='mainBrandsPhoto'>

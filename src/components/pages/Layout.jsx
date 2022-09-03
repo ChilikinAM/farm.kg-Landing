@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import { Link, animateScroll as scroll } from "react-scroll";
 
-import logo from '../img/logo.svg';
 import languageBtn from '../img/language.svg';
 
     const Layout = ( {t, handleLanguageChange, language, onFocusImput, onInputChange, value} ) => {
@@ -33,33 +33,31 @@ import languageBtn from '../img/language.svg';
         }
     }
 
-    //https://farm-kg.herokuapp.com/company/?search=
-
-
+    // Burger Menu
+    const [menuActive, setMenuActive] = useState(false);
     return (
       <>
       <header>
-            <div className='logo'><img src={logo} onClick={scrollToTop}></img></div>
-                <div className='mainMenu'>
+            <div className='logo' onClick={scrollToTop}></div>
+            <div className='mainMenu'>
                 {navigation()}
-                </div>  
+            </div>
+            <div className='burger-btn' onClick={() => setMenuActive(!menuActive)}>
+                <span/>
+            </div> 
             <div className='headerRight'>
                 <div className='search'>
                     <input value={value} onFocus={onFocusImput} onChange={onInputChange} placeholder={t('Search')}></input>
-                    {/*
-                        <ul>
-                            {result.map((res) => (
-                            <li key={res.id}><div className='searchSinglResult' onClick={() => redirectToResul(res.id, res.name)}><img className='searchCompanyLogo' src={res.photo}></img><h3>{language === 'ru' ? res.name_ru : res.name_en}</h3></div></li>))}
-                            </ul>*/}
                 </div>
-                <div className='language' onClick={handleLanguageChange}>
-                    <img src={languageBtn} alt='Сменить язык' onClick={handleLanguageChange}></img>
+                <div className='language' onClick={handleLanguageChange} data-title={language === 'ru' ? 'EN' : 'RU'}>
+                    <img src={languageBtn} alt="Сменить язык" onClick={handleLanguageChange}></img>
                 </div>
             </div>
         </header>
         <main>
         <Outlet t={t} language={language} />
         </main>
+        <div className='mobile-menu'><div className={menuActive ? 'burgeMenu active' : 'burgeMenu'}>{navigation()}</div></div>
       </>
     )
 }

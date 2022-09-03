@@ -12,7 +12,7 @@ const Companies = ({t, language, setIdCompany}) => {
     useEffect( () => {
       const getCompanies = async () => {
         setLoading(true);
-        const res = await fetch('https://farm-kg.herokuapp.com/company/', {method: "GET"});
+        const res = await fetch('https://farmkg1.herokuapp.com/company/', {method: "GET"});
         const data = await res.json();
         setCompanies(data);
         setLoading(false)
