@@ -1,4 +1,5 @@
 @import url(./components/fonts/stylesheet.css);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -53,6 +54,11 @@ header {
 .mainMenu a {
   text-decoration: none;
   color: white;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
 }
 .mainMenu a:hover {
   text-decoration: underline;
@@ -415,7 +421,7 @@ main {
   border-radius: 8.20408px 0px;
 }
 .companie h3 {
-  font-family: 'Gilroy';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 24.6122px;
@@ -567,7 +573,7 @@ color: #337347;
 }
 .callUs h3 {
     padding-top: 54px;
-    font-family: 'Gilroy';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -575,10 +581,10 @@ color: #337347;
     color: #FFFFFF; 
 }
 .callUs h1{
-    font-family: 'Gilroy';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 27px;
+    font-size: 25px;
     line-height: 30px;
     color: #FFFFFF;
 }
