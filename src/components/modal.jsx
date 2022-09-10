@@ -1,6 +1,5 @@
 import React from "react";
 import "./modal.css";
-import backicon from './img/backicon.svg';
 
 const Modal = ({active, setActive, children}) => {
     return (

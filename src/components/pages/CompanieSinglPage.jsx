@@ -18,20 +18,10 @@ const CompanieSinglPage = ({language, t }) => {
 
     useEffect(() => {
         getContact()
-    }, [])
-
-   /* const [imgCompany, setImgCompany] = useState([]);
-    useEffect(() => {
-      const getContact = async () => {
-        const res = await fetch(`https://farm-kg.herokuapp.com/company/${id}`, {method: "GET"})
-        .then(res => res.json())
-        .then(data => setImgCompany(data.products_photos))
-      }
-      getContact()
-    }, [])*/
+    }, []);
 
     // Слайдер продуктов
-    var settings = {
+    let settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -40,7 +30,7 @@ const CompanieSinglPage = ({language, t }) => {
         initialSlide: 0,
         responsive: [
           {
-            breakpoint: 1024,
+            breakpoint: 1324,
             settings: {
               slidesToShow: 3,
               slidesToScroll: 3,
@@ -49,7 +39,7 @@ const CompanieSinglPage = ({language, t }) => {
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 785,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,

@@ -7,7 +7,7 @@ const Companies = ({t, language, setIdCompany}) => {
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [companiesPerPage] = useState(3);
+    const [companiesPerPage] = useState(6);
   
     useEffect( () => {
       const getCompanies = async () => {
@@ -39,13 +39,13 @@ const Companies = ({t, language, setIdCompany}) => {
     return (
            <div className='companies'>
           <div className='companiesNav'>
-            <div className="btnBack" disabled={(currentPage == 1 ? "disabled" : "")} onClick={backPage}></div>
+            <div className="btnBack" disabled={(currentPage === 1 ? "disabled" : "")} onClick={backPage}></div>
               <Pagination 
             paginate={paginate}
             currentPage={currentPage}
             pageNumbers={pageNumbers}
           />
-            <div className="btmNext" disabled={(currentPage == (pageNumbers.length) ? "disabled" : "")} onClick={nextPage}></div> 
+            <div className="btmNext" disabled={(currentPage === (pageNumbers.length) ? "disabled" : "")} onClick={nextPage}></div> 
           </div>
             <ArrCompanies companies={currentCompanies} loading={loading} t={t} language={language} setIdCompany={setIdCompany} />
         </div>

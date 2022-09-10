@@ -8,5 +8,9 @@
     "contactContactUs": "Contact us",
     "contactCallUs": "Call us",
     "companiesMore": "More",
-    "nameProducts": "Products"
+    "nameProducts": "Products",
+    "404": "404",
+    "PageNotFound": "Page not found",
+    "ReturnTo": "Return to",
+    "HomePage": "Home page"
 }

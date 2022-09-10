@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const About = ({ t, language }) => {
+const About = ({ language }) => {
     const [textAboutUs, setTextAboutUs] = useState([]);
     useEffect(() => {
       const getAboutUs = async () => {
